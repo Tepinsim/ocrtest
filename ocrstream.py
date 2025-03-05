@@ -2,8 +2,6 @@ import streamlit as st
 import torch
 from PIL import Image
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
-#from google.colab import drive #Remove if not running in colab.
-
 
 # Load your model (replace with your model path)
 model_path = "/Users/Cs-Store/Desktop/intern2/OCRME/fine_tuned_trocr_khmer"
@@ -23,7 +21,7 @@ def perform_ocr(image):
 
 st.title("Khmer OCR with Feedback")
 
-uploaded_file = st.file_uploader("Upload an image", type=["png", "jpeg", "jpg"])
+uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"]) #added jpg and jpeg
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
