@@ -23,7 +23,7 @@ def perform_ocr(image):
 
 st.title("Khmer OCR with Feedback")
 
-uploaded_file = st.file_uploader("Upload an image", type=["png"])
+uploaded_file = st.file_uploader("Upload an image", type=["png", "jpeg", "jpg"])
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
