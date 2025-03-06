@@ -19,21 +19,13 @@ def perform_ocr(image):
     predicted_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
     return predicted_text
 
-st.title("Khmer OCR with Feedback")
+st.title("Khmer OCR")
 
-uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"]) #added jpg and jpeg
+uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
     predicted_text = perform_ocr(image)
-    st.write(f"**Prediction:** {predicted_text}")
-
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Correct"):
-            st.success("Thank you for the feedback!")
-    with col2:
-        if st.button("Incorrect"):
-            st.error("Please provide feedback to improve the model.")
+    st.write(f"Prediction: {predicted_text}")
